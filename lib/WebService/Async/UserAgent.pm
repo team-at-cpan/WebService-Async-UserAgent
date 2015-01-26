@@ -1,4 +1,4 @@
-package WebService::UA;
+package WebService::Async::UserAgent;
 # ABSTRACT: HTTP useragent abstraction for webservices
 use strict;
 use warnings;
@@ -7,14 +7,14 @@ our $VERSION = '0.001';
 
 =head1 NAME
 
-WebService::UA - common API for making HTTP requests to webservices
+WebService::Async::UserAgent - common API for making HTTP requests to webservices
 
 =head1 SYNOPSIS
 
  use WebService::Amazon::DynamoDB;
- use WebService::UA::NaHTTP;
+ use WebService::Async::UserAgent::NaHTTP;
  use Data::Dumper;
- my $ua = WebService::UA::NaHTTP->new;
+ my $ua = WebService::Async::UserAgent::NaHTTP->new;
  print Dumper(WebService::Amazon::DynamoDB->new(
   ua => $ua,
  )->describe_table(...)->get);
@@ -33,11 +33,21 @@ Instantiate.
 
 sub new { my $class = shift; bless { @_ }, $class }
 
+
 sub parallel { 0 }
 
 sub timeout { 60 }
 
 sub request { ... }
+
+sub get {
+	my ($self, $uri) = @_;
+	$uri = URI->new($uri) unless ref $uri;
+	my $req = HTTP::Request->new(
+		GET => $uri
+	);
+	$self->request($req)
+}
 
 sub ssl_args { () }
 

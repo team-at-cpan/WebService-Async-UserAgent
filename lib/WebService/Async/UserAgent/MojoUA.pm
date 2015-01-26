@@ -1,16 +1,16 @@
-package WebService::UA::MojoUA;
+package WebService::Async::UserAgent::MojoAsync::UserAgent;
 use strict;
 use warnings;
 
 =head1 NAME
 
-WebService::UA::MojoUA - make requests using L<Mojo::UserAgent>
+WebService::Async::UserAgent::MojoAsync::UserAgent - make requests using L<Mojo::UserAgent>
 
 =head1 DESCRIPTION
 
 Provides a L</request> method which will use L<LWP::UserAgent> to make
 requests and return a L<Future> containing the result. Used internally by
-L<WebService::UA>.
+L<WebService::Async::UserAgent>.
 
 =cut
 

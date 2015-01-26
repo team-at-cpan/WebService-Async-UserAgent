@@ -1,19 +1,19 @@
-package WebService::UA::NaHTTP;
+package WebService::Async::UserAgent::NaHTTP;
 
 use strict;
 use warnings;
 
-use parent qw(WebService::UA);
+use parent qw(WebService::Async::UserAgent);
 
 =head1 NAME
 
-WebService::UA::NaHTTP - make requests using L<Net::Async::HTTP>
+WebService::Async::UserAgent::NaHTTP - make requests using L<Net::Async::HTTP>
 
 =head1 DESCRIPTION
 
 Provides a L</request> method which will use L<Net::Async::HTTP> to make
 requests and return a L<Future> containing the result. Used internally by
-L<WebService::UA>.
+L<WebService::Async::UserAgent>.
 
 =cut
 
@@ -70,6 +70,8 @@ sub ua {
 	}
 	$self->{ua};
 }
+
+sub user_agent { 'test' }
 
 sub loop { shift->{loop} }
 
