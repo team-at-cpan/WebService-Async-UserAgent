@@ -11,15 +11,22 @@ WebService::Async::UserAgent - common API for making HTTP requests to webservice
 
 =head1 SYNOPSIS
 
- use WebService::Amazon::DynamoDB;
+ use strict;
+ use warnings;
  use WebService::Async::UserAgent::NaHTTP;
- use Data::Dumper;
- my $ua = WebService::Async::UserAgent::NaHTTP->new;
- print Dumper(WebService::Amazon::DynamoDB->new(
-  ua => $ua,
- )->describe_table(...)->get);
+ my $ua = WebService::Async::UserAgent::NaHTTP->new(loop => $loop);
+ eval {
+  print "was OK" if $ua->get('...')->get->code == 200;
+ } or warn "Failed - $@";
 
 =head1 DESCRIPTION
+
+This is an early release, most things are undocumented and subject to change.
+
+The intention is to provide an abstraction for webservice API calls without
+hardcoding a dependency on a specific HTTP client (such as L<Net::Async::HTTP>).
+Although there is very basic support for sync clients such as L<LWP::UserAgent>,
+they are untested and only there as an example. That may change in future.
 
 =head1 METHODS
 
