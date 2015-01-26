@@ -13,8 +13,6 @@ BEGIN {
 	}
 }
 
-use constant DEBUG => 0;
-
 use WebService::Async::UserAgent::NaHTTP;
 
 my $loop = IO::Async::Loop->new;
@@ -34,7 +32,7 @@ my $listener = $loop->listen(
 		$stream->configure(
 			on_read => sub {
 				my ($stream, $buf, $eof) = @_;
-				DEBUG && note "$1" while $$buf =~ s/^(.+)\x0D\x0A//;
+				$stream->debug_printf("Had line: %s", $1) while $$buf =~ s/^(.+)\x0D\x0A//;
 				if($$buf =~ s/^\x0D\x0A//) {
 					$stream->write(
 						join "\x0D\x0A",
