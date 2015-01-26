@@ -1,14 +1,15 @@
-package WebService::Async::UserAgent::MojoAsync::UserAgent;
+package WebService::Async::UserAgent::MojoUA;
+
 use strict;
 use warnings;
 
 =head1 NAME
 
-WebService::Async::UserAgent::MojoAsync::UserAgent - make requests using L<Mojo::UserAgent>
+WebService::Async::UserAgent::MojoUA - make requests using L<Mojo::UserAgent>
 
 =head1 DESCRIPTION
 
-Provides a L</request> method which will use L<LWP::UserAgent> to make
+Provides a L</request> method which will use L<Mojo::UA> to make
 requests and return a L<Future> containing the result. Used internally by
 L<WebService::Async::UserAgent>.
 
@@ -39,11 +40,11 @@ sub request {
 	my $method = lc $req->method;
 	my $resp = $self->ua->$method(''.$req->uri => { map {; $_ => ''.$req->header($_) } $req->header_field_names } => $req->content);
 	if(my $res = $resp->success) {
-		return Future->new->done($res->body)
+		return Future->done($res->body)
 	}
 
 	my $status = join ' ', $resp->error;
-	return Future->new->fail($status, $resp, $req)
+	return Future->fail($status, $resp, $req)
 }
 
 =head2 ua

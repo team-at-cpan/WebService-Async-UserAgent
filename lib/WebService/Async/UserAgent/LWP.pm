@@ -1,6 +1,9 @@
 package WebService::Async::UserAgent::LWP;
+
 use strict;
 use warnings;
+
+use parent qw(WebService::Async::UserAgent);
 
 =head1 NAME
 
