@@ -49,7 +49,7 @@ sub get {
 	$self->request($req)
 }
 
-sub user_agent { $_[0]->{user_agent} //= "Mozilla/5.0 (Perl) $_[0]" }
+sub user_agent { $_[0]->{user_agent} //= "Mozilla/5.0 (Perl) " . (ref $_[0] || $_[0]) }
 
 sub ssl_args { () }
 
