@@ -71,8 +71,6 @@ sub ua {
 	$self->{ua};
 }
 
-sub user_agent { 'test' }
-
 sub loop { shift->{loop} }
 
 1;
