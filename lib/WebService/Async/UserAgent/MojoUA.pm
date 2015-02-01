@@ -3,6 +3,8 @@ package WebService::Async::UserAgent::MojoUA;
 use strict;
 use warnings;
 
+use parent qw(WebService::Async::UserAgent);
+
 =head1 NAME
 
 WebService::Async::UserAgent::MojoUA - make requests using L<Mojo::UserAgent>

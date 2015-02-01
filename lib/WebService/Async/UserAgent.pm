@@ -3,7 +3,7 @@ package WebService::Async::UserAgent;
 use strict;
 use warnings;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 =head1 NAME
 
@@ -27,6 +27,12 @@ The intention is to provide an abstraction for webservice API calls without
 hardcoding a dependency on a specific HTTP client (such as L<Net::Async::HTTP>).
 Although there is very basic support for sync clients such as L<LWP::UserAgent>,
 they are untested and only there as an example. That may change in future.
+
+=cut
+
+use URI;
+use HTTP::Request;
+use HTTP::Response;
 
 =head1 METHODS
 

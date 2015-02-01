@@ -1,5 +1,8 @@
 requires 'parent', 0;
 requires 'Future', '>= 0.30';
+requires 'URI', 0;
+requires 'HTTP::Request', 0;
+requires 'HTTP::Response', 0;
 
 recommends 'IO::Async', '>= 0.63';
 recommends 'Net::Async::HTTP', '>= 0.36';
