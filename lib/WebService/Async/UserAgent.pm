@@ -53,14 +53,18 @@ sub timeout { 60 }
 
 sub request { ... }
 
-sub get {
+sub GET {
 	my ($self, $uri) = @_;
 	$uri = URI->new($uri) unless ref $uri;
 	my $req = HTTP::Request->new(
 		GET => $uri
 	);
+	$req->header(host => $uri->host);
 	$self->request($req)
 }
+
+# Back-compat
+*get = GET;
 
 sub user_agent { $_[0]->{user_agent} //= "Mozilla/5.0 (Perl) " . (ref $_[0] || $_[0]) }
 
