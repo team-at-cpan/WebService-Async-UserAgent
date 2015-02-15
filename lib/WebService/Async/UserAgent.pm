@@ -64,7 +64,7 @@ sub GET {
 }
 
 # Back-compat
-*get = GET;
+*get = \&GET;
 
 sub user_agent { $_[0]->{user_agent} //= "Mozilla/5.0 (Perl) " . (ref $_[0] || $_[0]) }
 

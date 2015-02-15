@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use 5.010001;
+use 5.012000;
 
 use ExtUtils::MakeMaker 6.48;
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "WebService-Async-UserAgent",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.010001",
+  "MIN_PERL_VERSION" => "5.012000",
   "NAME" => "WebService::Async::UserAgent",
   "PREREQ_PM" => {
     "Future" => "0.30",
@@ -28,12 +28,15 @@ my %WriteMakefileArgs = (
     "parent" => 0
   },
   "TEST_REQUIRES" => {
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Test::CheckDeps" => "0.010",
     "Test::Fatal" => "0.010",
     "Test::More" => "0.98",
     "Test::Refcount" => "0.07"
   },
-  "VERSION" => "0.002",
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -42,9 +45,12 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "ExtUtils::MakeMaker" => "6.48",
+  "File::Spec" => 0,
   "Future" => "0.30",
   "HTTP::Request" => 0,
   "HTTP::Response" => 0,
+  "IO::Handle" => 0,
+  "IPC::Open3" => 0,
   "Test::CheckDeps" => "0.010",
   "Test::Fatal" => "0.010",
   "Test::More" => "0.98",
