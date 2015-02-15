@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.003     2015-02-15 18:34:20+00:00 Europe/London
 	Features:
 	* ->GET method as a wrapper around ->request
 	* Pass through arguments when making a request
