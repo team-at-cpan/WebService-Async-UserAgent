@@ -5,6 +5,9 @@ Revision history for {{$dist->name}}
 	* ->GET method as a wrapper around ->request
 	* Pass through arguments when making a request
 
+	Test fixes:
+	* Disable invalid synopsis test
+
 0.002     2015-02-01 08:21:23+00:00 Europe/London
 	No new features.
 
