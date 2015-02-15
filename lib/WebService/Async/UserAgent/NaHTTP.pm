@@ -30,15 +30,21 @@ response content on success, or the failure reason on failure.
 =cut
 
 sub request {
-	my $self = shift;
-	my $req = shift;
-	my ($host, $port) = split /:/, '' . $req->uri->host_port;
-	my $ssl = $req->uri->scheme eq 'https';
+	my ($self, $req, %args) = @_;
+	my $host = delete $args{host};
+	my $port = delete $args{port};
+	unless(defined($host) && defined($port)) {
+		my ($h, $p) = split /:/, '' . $req->uri->host_port;
+		$host //= $h;
+		$port //= $p;
+	}
+	my $ssl = delete($args{ssl}) // ($req->uri->scheme eq 'https');
 	$self->ua->do_request(
 		request => $req,
 		host    => $host,
 		port    => $port || ($ssl ? 443 : 80),
 		SSL     => ($ssl ? 1 : 0),
+		%args,
 	)->transform(
 		done => sub {
 			shift->decoded_content
