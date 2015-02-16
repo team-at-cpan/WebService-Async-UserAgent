@@ -4,7 +4,7 @@ requires 'URI', 0;
 requires 'HTTP::Request', 0;
 requires 'HTTP::Response', 0;
 
-recommends 'IO::Async', '>= 0.63';
+recommends 'IO::Async', '>= 0.64';
 recommends 'Net::Async::HTTP', '>= 0.36';
 
 on 'test' => sub {
